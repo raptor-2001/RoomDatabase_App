@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="#BAF12020">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/recId"
+            android:layout_width="40dp"
+            android:layout_height="70dp"
+
+            android:gravity="center"
+            android:hint="id"
+            android:textColor="#3E5AFA"
+            android:textColorHint="#656464"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+
+            android:id="@+id/recFirst"
+            android:layout_width="173dp"
+            android:layout_height="match_parent"
+            android:hint="First Name"
+            android:paddingLeft="10dp"
+            android:paddingTop="18dp"
+            android:textColor="#3E5AFA"
+            android:textColorHint="#656464"
+            android:textSize="25dp"
+            app:layout_constraintStart_toEndOf="@+id/recId"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/recLast"
+            android:layout_width="200dp"
+            android:layout_height="71dp"
+            android:hint="LastName"
+            android:paddingLeft="10dp"
+            android:paddingTop="18dp"
+            android:textColor="#3E5AFA"
+            android:textColorHint="#656464"
+
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/delbtn"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/recFirst"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/delbtn"
+            android:layout_width="40dp"
+            android:layout_height="61dp"
+            android:background="#F80606"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.526"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
