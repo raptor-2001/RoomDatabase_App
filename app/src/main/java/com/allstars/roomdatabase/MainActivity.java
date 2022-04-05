@@ -11,13 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText t1,t2,idNo;
-    Button b1,b2;
+    Button b1,b2,viewSingle,deleteSingle,updateSingle;
+    TextView singleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
         idNo = findViewById(R.id.idNo);
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
-
+        viewSingle = findViewById(R.id.viewSingle);
+        singleView = findViewById(R.id.singleView);
+        deleteSingle = findViewById(R.id.deleteSingle);
+        updateSingle = findViewById(R.id.updateSingle);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +70,55 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
         });
+
+        viewSingle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database db = Room.databaseBuilder(getApplicationContext(),
+                        database.class, "room_db").allowMainThreadQueries().build();
+                UserDao userDao = db.userDao();
+                int id = Integer.parseInt(String.valueOf(idNo.getText()));
+                List<User> users = userDao.getallusers();
+                String str= "";
+
+                for(User user: users){
+                    if(id == user.getUid()){
+                        singleView.setText("id: " + id + "\nuser : "+user.firstName+"\npassword : "+user.lastName+"\n\n");
+                    }
+//                    str=str+"\t"+user.firstName+" "+user.lastName+"\n\n";
+//                    data.setText(str);
+                }
+            }
+        });
+
+        deleteSingle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database db = Room.databaseBuilder(getApplicationContext(),
+                        database.class, "room_db").allowMainThreadQueries().build();
+                UserDao userDao = db.userDao();
+
+                int id = Integer.parseInt(String.valueOf(idNo.getText()));
+                List<User> users = userDao.getallusers();
+
+                for(User user: users){
+                    if(id == user.getUid()){
+                        userDao.deleteById(user.getUid());
+                        Toast.makeText(MainActivity.this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+                        idNo.setText(" ");
+//                        users.remove();
+//
+//                        notifyDataSetChanged();
+                    }
+//                    str=str+"\t"+user.firstName+" "+user.lastName+"\n\n";
+//                    data.setText(str);
+                }
+
+            }
+        });
     }
+
+
 
 //    class bgThread extends Thread{
 //        public void run(){

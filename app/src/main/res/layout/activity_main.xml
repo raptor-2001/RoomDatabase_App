@@ -13,7 +13,7 @@
         android:id="@+id/firstName"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:hint="Enter First Name"
+        android:hint="Username"
         android:textColor="@color/black"
         android:textColorHint="#373535"
         android:layout_marginTop="40dp"/>
@@ -22,35 +22,100 @@
         android:id="@+id/lastName"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:hint="Enter Last Name"
+        android:hint="Password"
+        android:inputType="textVisiblePassword"
         android:textColor="@color/black"
         android:textColorHint="#373535"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="15dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="35dp">
+
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="16dp"
+            android:text="save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="92dp"
+            android:text="view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <EditText
         android:id="@+id/idNo"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:hint="Enter ID"
+        android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="#373535"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
 
-    <Button
-        android:id="@+id/b1"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp">
+
+
+        <Button
+            android:id="@+id/viewSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="view by id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/deleteSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/updateSingle"
+            app:layout_constraintStart_toEndOf="@+id/viewSingle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/updateSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="update"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/singleView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="30dp"
+        android:hint="id username password"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:paddingTop="15dp"
 
-    <Button
-        android:id="@+id/b2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="view"
-        android:layout_marginTop="30dp" />
-
+        />
 
 
 
