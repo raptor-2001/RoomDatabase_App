@@ -1,15 +1,25 @@
 package com.allstars.roomdatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.room.Index;
 import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.SparseIntArray;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +28,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText t1,t2,idNo;
-    Button b1,b2,viewSingle,deleteSingle,updateSingle;
+    AppCompatButton b1,b2,viewSingle,deleteSingle,updateSingle;
     TextView singleView;
     database db;
     UserDao userDao;
+    ImageButton show,hide;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +47,28 @@ public class MainActivity extends AppCompatActivity {
         singleView = findViewById(R.id.singleView);
         deleteSingle = findViewById(R.id.deleteSingle);
         updateSingle = findViewById(R.id.updateSingle);
+        show = findViewById(R.id.show);
+        hide = findViewById(R.id.hide);
 
+
+        idNo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if(idNo.getText().toString().isEmpty()){
+                        singleView.setText("");
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         db = Room.databaseBuilder(getApplicationContext(),
                 database.class, "room_db").allowMainThreadQueries().build();
         userDao = db.userDao();
@@ -54,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewSingle.setOnClickListener(view -> {
             if(!isValidId()){
+                Toast.makeText(MainActivity.this, "Invalid ID", Toast.LENGTH_SHORT).show();
                 return;
             }
             int id = Integer.parseInt(String.valueOf(idNo.getText()));
@@ -62,15 +95,18 @@ public class MainActivity extends AppCompatActivity {
 
             for(User user: users){
                 if(id == user.getUid()){
-                    singleView.setText("id: " + id + "\nuser : "+user.firstName+"\npassword : "+user.lastName+"\n\n");
+                    singleView.setText("id: " + id + " username: "+user.firstName);
+                    return;
                 }
 
             }
+            Toast.makeText(MainActivity.this, "Invalid ID", Toast.LENGTH_SHORT).show();
         });
 
         deleteSingle.setOnClickListener(view -> {
 
             if(!isValidId()){
+                Toast.makeText(MainActivity.this, "Invalid ID", Toast.LENGTH_SHORT).show();
                 return;
             }
             int id = Integer.parseInt(String.valueOf(idNo.getText()));
@@ -96,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             if(!isValidId()){
+                Toast.makeText(MainActivity.this, "Invalid ID", Toast.LENGTH_SHORT).show();
                 return;
             }
             int id = Integer.parseInt(String.valueOf(idNo.getText()));
@@ -104,22 +141,17 @@ public class MainActivity extends AppCompatActivity {
             for(User user: users){
                 if(id == user.getUid()){
 
-
-                     if(isValid()){
-
-                     }else{
-                         userDao.update(t1.getText().toString(),t2.getText().toString(),id);
+                         userDao.update(t1.getText().toString(),t2.getText().toString(),user.getUid());
                          t1.setText("");
                          t2.setText("");
+                         idNo.setText("");
                          Toast.makeText(MainActivity.this, "updated Successfully", Toast.LENGTH_SHORT).show();
                          return;
-                     }
-
 
                 }
-                Toast.makeText(MainActivity.this, "ID doesn't exists", Toast.LENGTH_SHORT).show();
 
             }
+            Toast.makeText(MainActivity.this, "Invalid ID", Toast.LENGTH_SHORT).show();
 
         });
     }
@@ -132,9 +164,8 @@ public class MainActivity extends AppCompatActivity {
 
             }if(t2.getText().toString().isEmpty()){
                 t2.setError("Required");
-                return false;
             }
-
+            return false;
 
         }return true;
 
@@ -148,4 +179,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    public void show(View view) {
+        show.setVisibility(View.INVISIBLE);
+        hide.setVisibility(View.VISIBLE);
+        t2.setInputType( InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+    }
+
+    public void hide(View view) {
+        hide.setVisibility(View.INVISIBLE);
+        show.setVisibility(View.VISIBLE);
+        t2.setInputType( InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD );
+    }
 }

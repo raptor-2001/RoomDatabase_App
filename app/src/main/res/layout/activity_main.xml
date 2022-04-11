@@ -1,137 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:background="#ff66b3"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/firstName"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
-            android:hint="Username"
-            android:textColor="@color/black"
-            android:textColorHint="#373535">
-
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/lastName"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
-            android:hint="Password"
-            android:inputType="textVisiblePassword"
-            android:textColor="@color/black"
-            android:textColorHint="#373535">
-
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="35dp">
-
-        <Button
-            android:id="@+id/b1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="16dp"
-            android:text="save"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="92dp"
-            android:text="view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <EditText
-        android:id="@+id/idNo"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:hint="Enter ID"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textColorHint="#373535" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="25dp">
-
-
-        <Button
-            android:id="@+id/viewSingle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="view by id"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/deleteSingle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/updateSingle"
-            app:layout_constraintStart_toEndOf="@+id/viewSingle"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/updateSingle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="update"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/singleView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:hint="id username password"
-        android:paddingTop="15dp"
-        android:textAlignment="center"
-        android:textSize="22dp"
+        android:layout_marginRight="15.7dp"
+        android:layout_marginLeft="15.7dp"
+        android:orientation="vertical"
+        >
 
-        />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="700dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="444dp"
+                android:background="@drawable/white_cueve_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="25dp"
+                android:paddingLeft="20.7dp">
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+                <EditText
+                    android:id="@+id/firstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="57.7dp"
+                    android:hint="Username"
+                    android:textColor="@color/black"
+                    android:textColorHint="#c2c2c2" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="350dp"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/lastName"
+                        android:layout_width="300dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="16dp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/black"
+                        android:textColorHint="#c2c2c2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+
+                    <ImageButton
+                        android:id="@+id/show"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/white"
+                        android:onClick="show"
+                        android:src="@drawable/show"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <ImageButton
+                        android:id="@+id/hide"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/white"
+                        android:onClick="hide"
+                        android:src="@drawable/hide1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/b2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="76dp"
+                        android:background="@drawable/btnbg"
+                        android:text="view"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/b1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/btnbg"
+                        android:text="save"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <EditText
+                    android:id="@+id/idNo"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="100dp"
+                    android:hint="Enter ID"
+
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="25dp">
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/viewSingle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/btnbgwhite"
+                        android:text="view by id"
+                        android:textColor="#ff66b3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/deleteSingle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btnbgwhite"
+                        android:text="delete"
+                        android:textColor="#ff66b3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/updateSingle"
+                        app:layout_constraintStart_toEndOf="@+id/viewSingle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.727" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/updateSingle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/btnbgwhite"
+                        android:text="update"
+                        android:textColor="#ff66b3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:id="@+id/singleView"
+                    android:layout_width="351dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="id username "
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textColorHint="#C1FFFFFF"
+                    android:textSize="22dp"
+
+                    />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
