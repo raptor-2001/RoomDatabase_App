@@ -141,12 +141,16 @@ public class MainActivity extends AppCompatActivity {
             for(User user: users){
                 if(id == user.getUid()){
 
-                         userDao.update(t1.getText().toString(),t2.getText().toString(),user.getUid());
-                         t1.setText("");
-                         t2.setText("");
-                         idNo.setText("");
-                         Toast.makeText(MainActivity.this, "updated Successfully", Toast.LENGTH_SHORT).show();
-                         return;
+                         if(isValid()) {
+                             userDao.update(t1.getText().toString(), t2.getText().toString(), user.getUid());
+                             t1.setText("");
+                             t2.setText("");
+                             idNo.setText("");
+                             Toast.makeText(MainActivity.this, "updated Successfully", Toast.LENGTH_SHORT).show();
+                             return;
+                         }else{
+                             return;
+                         }
 
                 }
 
